@@ -7,6 +7,7 @@ class Handler implements URLHandler {
     int num = 0;
 
     public String handleRequest(URI url) {
+
         if (url.getPath().equals("/")) {
             return String.format("Number: %d", num);
         } else if (url.getPath().equals("/increment")) {
@@ -17,7 +18,7 @@ class Handler implements URLHandler {
             if (url.getPath().contains("/add")) {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("count")) {
-                    num += Integer.parseInt(parameters[1]);
+                    num = num + Integer.parseInt(parameters[1]);
                     return String.format("Number increased by %s! It's now %d", parameters[1], num);
                 }
             }
